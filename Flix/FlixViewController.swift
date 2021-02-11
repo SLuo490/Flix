@@ -52,6 +52,7 @@ class FlixViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
