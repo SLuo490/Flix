@@ -58,13 +58,14 @@ class FlixViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell ()
+        //if another cell is offscreen, give recycle cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
+            
         
         let movie = movies[indexPath.row]
         let title = movie["title"] as! String
         
-        
-        cell.textLabel!.text = title
+        cell.titleLabel.text = title
         
         
         return cell
