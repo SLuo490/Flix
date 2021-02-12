@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class FlixViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -61,12 +62,20 @@ class FlixViewController: UIViewController, UITableViewDelegate, UITableViewData
         //if another cell is offscreen, give recycle cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
             
-        
+        //creating scrolling view with movie title and synopis
         let movie = movies[indexPath.row]
         let title = movie["title"] as! String
+        let synopsis = movie["overview"] as! String
         
         cell.titleLabel.text = title
+        cell.synopsisLabel.text = synopsis
         
+ //
+        let baseUrl = "https://image.tmdb.org/t/p/w185"
+        let posterPath = movie["poster_path"] as! String
+        let posterUrl = URL(string: baseUrl + posterPath)!
+                
+        cell.posterView.af_setImage(withURL: posterUrl)
         
         return cell
     }
