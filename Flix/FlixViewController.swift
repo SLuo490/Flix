@@ -22,7 +22,7 @@ class FlixViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
 
-        // Do any additional setup after loading the view.
+        //pull api 
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -39,12 +39,7 @@ class FlixViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             
             print(self.movies)
-            
-            
-            
-              // TODO: Get the array of movies
-              // TODO: Store the movies in a property to use elsewhere
-              // TODO: Reload your table view data
+        
 
            }
             
@@ -83,7 +78,6 @@ class FlixViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
